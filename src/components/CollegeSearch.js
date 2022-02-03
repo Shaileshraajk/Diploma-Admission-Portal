@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-class CollegeList extends Component {
+class CollegeSearch extends Component {
     render() {
         return (
             <div>
-                <h1>Colleges List</h1>
+                <h1>College Search</h1>
             </div>
         );
     }
 }
 
-export default CollegeList;
+export default CollegeSearch;
