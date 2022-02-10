@@ -1,12 +1,22 @@
-import './App.css';
+import React from 'react';
+import Home from './pages/Home';
+import {StyledContainer} from './components/Styles';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from 'react-router-dom';
 
 
 
 function App() {
   return (
-    <div className="App">
-      <h1>Yo</h1>
-    </div>
+    <Router>
+      <StyledContainer>
+        <Home />
+      </StyledContainer>
+    </Router>
+    
   );
 }
 
