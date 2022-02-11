@@ -12,14 +12,14 @@ const Signup = () => {
         <div>
             <StyledFormArea>
                 <Avatar image={RambosLogo} />
-                <StyledTitle color={colors.theme} size={30}>Admin Signup</StyledTitle>
+                <StyledTitle color={colors.theme} size={30}>User Signup</StyledTitle>
                 <Formik
                     initialValues={{
                         email: "",
                         password: "",
-                        repeatPassword: "",
-                        mobileno: "",
-                        name: ""
+                        confirmPassword: "",
+                        mobileNumber: "",
+                        username: ""
                     }}
                     validationSchema={
                         Yup.object({
@@ -27,9 +27,9 @@ const Signup = () => {
                                 .required("Required"),
                             password: Yup.string().min(8, "Password is too short").max(15, "Password is too long")
                                 .required("Required"),
-                            name: Yup.string().required("Required"),
-                            mobileno: Yup.string().phone('IN', true, 'Mobile Number is invalid'),
-                            repeatPassword: Yup.string().required("Required").oneOf([Yup.ref("password")], "Passwords do not match")
+                            username: Yup.string().required("Required"),
+                            mobileNumber: Yup.string().phone('IN', true, 'Mobile Number is invalid'),
+                            confirmPassword: Yup.string().required("Required").oneOf([Yup.ref("password")], "Passwords do not match")
                         })
                     }
                     onSubmit={(values, {setSubmitting}) => {
@@ -39,7 +39,7 @@ const Signup = () => {
                     {({isSubmitting}) => (
                         <Form>
                             <TextInput
-                                name="name"
+                                name="username"
                                 type="text"
                                 label="Full Name"
                                 placeholder="Daniel"
@@ -47,7 +47,7 @@ const Signup = () => {
                             />
 
                             <TextInput
-                                name="mobileno"
+                                name="mobileNumber"
                                 type="text"
                                 label="Mobile Number"
                                 placeholder="9999999999"
@@ -72,7 +72,7 @@ const Signup = () => {
                             />
 
                             <TextInput
-                                name="repeatPassword"
+                                name="confirmPassword"
                                 type="password"
                                 label="Repeat Password"
                                 placeholder="******"
