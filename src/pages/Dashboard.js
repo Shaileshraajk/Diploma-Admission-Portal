@@ -16,10 +16,10 @@ const Dashboard = () => {
             </div>
             <StyledFormArea bg={colors.dark2}>
                 <StyledTitle size={65}>
-                    Welcome, Admin 
+                    Welcome, User 
                 </StyledTitle>
                 <ButtonGroup>
-                    <StyledButton to="#">Logout</StyledButton>
+                    <StyledButton to="/">Logout</StyledButton>
                 </ButtonGroup>
             </StyledFormArea>
         </div>
