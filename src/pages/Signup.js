@@ -1,4 +1,4 @@
-import {StyledTextInput, StyledFormArea, StyledFormButton, StyledLabel, Avatar, StyledTitle, colors, ButtonGroup, ExtraText, TextLink, CopyrightText} from './../components/Styles'
+import {StyledTextInput, StyledFormArea, StyledFormButton, StyledLabel, Avatar, StyledTitle, colors, ButtonGroup, ExtraText, TextLink, CopyrightText, Dropdown} from './../components/Styles'
 import RambosLogo from './../assets/RambosLogo.jpg';
 import {Formik, Form} from 'formik';
 import {TextInput} from './../components/FormLib';
@@ -19,10 +19,12 @@ const Signup = () => {
                         password: "",
                         confirmPassword: "",
                         mobileNumber: "",
-                        username: ""
+                        username: "",
+                        usertype: ""
                     }}
                     validationSchema={
                         Yup.object({
+                            usertype: Yup.string().required("Required"),
                             email: Yup.string().email("Invalid email id")
                                 .required("Required"),
                             password: Yup.string().min(8, "Password is too short").max(15, "Password is too long")
@@ -38,6 +40,13 @@ const Signup = () => {
                 >
                     {({isSubmitting}) => (
                         <Form>
+
+                            <Dropdown name='usertype'>
+                                <option value="" hidden> Select Type </option>
+                                <option value="1">Admin</option>
+                                <option value="2">User</option>
+                            </Dropdown>
+                            
                             <TextInput
                                 name="username"
                                 type="text"
