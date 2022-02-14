@@ -18,7 +18,7 @@ const Home = () => {
                 Welcome to RAMBOS Admission 
             </StyledTitle>
             <StyledSubTitle size={27}>
-                India's #1 Online Admission Portal
+                India's #1 Web Admission Portal
             </StyledSubTitle>
             <ButtonGroup>
             <StyledButton to="/login">Login</StyledButton>
