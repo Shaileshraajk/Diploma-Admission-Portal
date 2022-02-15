@@ -217,4 +217,5 @@ export const Dropdown = styled.select`
         min-height: 20px;
         padding: 0px 2px 1px;
       }
+
 `;
