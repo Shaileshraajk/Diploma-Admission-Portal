@@ -1,4 +1,4 @@
-import {StyledTextInput, StyledFormArea, StyledFormButton, StyledLabel, Avatar, StyledTitle, colors, ButtonGroup, ExtraText, TextLink, CopyrightText, Dropdown} from './../components/Styles'
+import {StyledTextInput, StyledFormArea, StyledFormButton, StyledLabel, Avatar, StyledTitle, colors, ButtonGroup, ExtraText, TextLink, CopyrightText} from './../components/Styles'
 import RambosLogo from './../assets/RambosLogo.jpg';
 import {Formik, Form} from 'formik';
 import {TextInput} from './../components/FormLib';
@@ -6,13 +6,14 @@ import {FiMail, FiLock, FiUser, FiSmartphone} from 'react-icons/fi';
 import * as Yup from 'yup';
 import "yup-phone";
 import {Rings} from 'react-loader-spinner';
+import React from 'react';
 
 const Signup = () => {
     return(
         <div>
             <StyledFormArea>
                 <Avatar image={RambosLogo} />
-                <StyledTitle color={colors.theme} size={30}>User Signup</StyledTitle>
+                <StyledTitle color={colors.theme} size={30}>Signup</StyledTitle>
                 <Formik
                     initialValues={{
                         email: "",
@@ -41,12 +42,14 @@ const Signup = () => {
                     {({isSubmitting}) => (
                         <Form>
 
-                            <Dropdown name='usertype'>
-                                <option value="" hidden> Select Type </option>
-                                <option value="1">Admin</option>
-                                <option value="2">User</option>
-                            </Dropdown>
-                            
+                            <TextInput
+                                name="usertype"
+                                type="text"
+                                label="User Type -  1 for Admin, 2 for User"
+                                placeholder="1 or 2"
+                                icon={<FiUser />}
+                            />
+
                             <TextInput
                                 name="username"
                                 type="text"
@@ -99,6 +102,8 @@ const Signup = () => {
                                         width={100}
                                     />
                                 )}
+
+                            <StyledFormButton type="reset">Reset</StyledFormButton>
                             </ButtonGroup>
                         </Form>
                     )}
