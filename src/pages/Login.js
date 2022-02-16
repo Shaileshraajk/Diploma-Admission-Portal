@@ -4,7 +4,6 @@ import {Formik, Form} from 'formik';
 import {TextInput} from './../components/FormLib';
 import {FiMail, FiLock} from 'react-icons/fi';
 import * as Yup from 'yup';
-import {Rings} from 'react-loader-spinner';
 
 
 const Login = () => {
@@ -53,16 +52,7 @@ const Login = () => {
                             </TextInput>
 
                             <ButtonGroup>
-                                {!isSubmitting && (<StyledFormButton type="submit">Login</StyledFormButton>)}
-
-                                {isSubmitting && (
-                                    <Rings 
-                                        type="ThreeDots"
-                                        color={colors.theme}
-                                        height={49}
-                                        width={100}
-                                    />
-                                )}
+                                <StyledFormButton type="submit">Login</StyledFormButton>
                             </ButtonGroup>
                         </Form>
                     )}
