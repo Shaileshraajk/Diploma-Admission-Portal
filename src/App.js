@@ -3,6 +3,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Dashboard from './pages/Dashboard';
+import UserAdded from './pages/UserAdded'
 
 import {StyledContainer} from './components/Styles';
 import {
@@ -21,6 +22,9 @@ function App() {
         <Switch>
           <Route path="/signup">
             <Signup />
+          </Route>
+          <Route path="/useradded">
+            <UserAdded />
           </Route>
           <Route path="/login">
             <Login />

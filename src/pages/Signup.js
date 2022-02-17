@@ -5,9 +5,21 @@ import {TextInput} from './../components/FormLib';
 import {FiMail, FiLock, FiUser, FiSmartphone} from 'react-icons/fi';
 import * as Yup from 'yup';
 import "yup-phone";
-import React from 'react';
+import React, { useState } from 'react';
+import UserAdded from './UserAdded';
 
-const Signup = () => {
+
+const Signup = () => {   
+    const [message, setMessage] = useState(""); 
+    
+    const initialValues = {
+        user_type: "",
+        email: "",
+        name: "",
+        mobno: "",
+        pwd: "",
+        confirmpwd: ""
+    };
     return(
         <div>
             <StyledFormArea>
@@ -43,8 +55,9 @@ const Signup = () => {
 
                             }).then(()=>{
                                 console.log("New user added")
+                                setMessage("New user Registered successfully")
                             })
-                    }}
+                    }} 
                 >
                     {({isSubmitting}) => (
                         <Form>
@@ -102,6 +115,9 @@ const Signup = () => {
                                 <StyledFormButton type="submit">Signup</StyledFormButton>
                                 <StyledFormButton type="reset">Reset</StyledFormButton>
                             </ButtonGroup>
+                            {message && (
+                                <UserAdded />
+                            )}
                         </Form>
                     )}
                 </Formik>
