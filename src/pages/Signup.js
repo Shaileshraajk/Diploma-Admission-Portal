@@ -12,14 +12,6 @@ import UserAdded from './UserAdded';
 const Signup = () => {   
     const [message, setMessage] = useState(""); 
     
-    const initialValues = {
-        user_type: "",
-        email: "",
-        name: "",
-        mobno: "",
-        pwd: "",
-        confirmpwd: ""
-    };
     return(
         <div>
             <StyledFormArea>
