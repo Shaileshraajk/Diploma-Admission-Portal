@@ -39,15 +39,16 @@ const Signup = () => {
                         })
                     }
                     onSubmit={(fields) => {
-                        console.log(JSON.stringify(fields, null, 4));
-                        fetch("http://localhost:8080/user/add",{
+                        // console.log(JSON.stringify(fields, null, 4));
+                        let fetchRes = fetch("http://localhost:8080/user/add",{
                             method:"POST",
                             headers:{"Content-Type":"application/json"},
                             body:JSON.stringify(fields)
 
-                            }).then(()=>{
-                                console.log("New user added")
-                                setMessage("New user Registered successfully")
+                            }).then((response)=>{
+                                response.text().then(d => {
+                                    setMessage(d)
+                                })
                             })
                     }} 
                 >
@@ -108,7 +109,16 @@ const Signup = () => {
                                 <StyledFormButton type="reset">Reset</StyledFormButton>
                             </ButtonGroup>
                             {message && (
-                                <UserAdded />
+                                <div>
+                                <StyledFormArea>
+                                    <StyledTitle color={colors.theme} size={30}>
+                                        {message}
+                                    </StyledTitle>
+                                    <ExtraText>
+                                        Please continue with <TextLink to="/login">Login</TextLink>
+                                    </ExtraText>
+                                </StyledFormArea>
+                                </div>
                             )}
                         </Form>
                     )}
@@ -123,5 +133,4 @@ const Signup = () => {
         </div>
     )
 }
-
 export default Signup;
