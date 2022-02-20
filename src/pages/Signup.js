@@ -115,7 +115,7 @@ const Signup = () => {
                                         {message}
                                     </StyledTitle>
                                     <ExtraText>
-                                        Please proceed with <TextLink to="/login">Login</TextLink>
+                                        Please continue with <TextLink to="/login">Login</TextLink>
                                     </ExtraText>
                                 </StyledFormArea>
                                 </div>
