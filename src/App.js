@@ -4,6 +4,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Dashboard from './pages/Dashboard';
 import UserAdded from './pages/UserAdded'
+import UsernotAdded from './pages/UsernotAdded';
 
 import {StyledContainer} from './components/Styles';
 import {
@@ -25,6 +26,9 @@ function App() {
           </Route>
           <Route path="/useradded">
             <UserAdded />
+          </Route>
+          <Route path="/usernotadded">
+            <UsernotAdded />
           </Route>
           <Route path="/login">
             <Login />
