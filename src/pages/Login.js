@@ -4,29 +4,56 @@ import {Formik, Form} from 'formik';
 import {TextInput} from './../components/FormLib';
 import {FiMail, FiLock} from 'react-icons/fi';
 import * as Yup from 'yup';
+import {useHistory} from 'react-router-dom'
+import React, { useState } from 'react';
+
 
 
 const Login = () => {
+    const history  = useHistory();
+    const [message, setMessage] = useState("");
     return(
         <div>
             <StyledFormArea>
                 <Avatar image={RambosLogo} />
-                <StyledTitle color={colors.theme} size={30}>User Login</StyledTitle>
+                <StyledTitle color={colors.theme} size={30}>Login</StyledTitle>
                 <Formik
                     initialValues={{
                         email: "",
-                        password: "",
+                        pwd: ""
                     }}
                     validationSchema={
                         Yup.object({
                             email: Yup.string().email("Invalid email id")
                             .required("Required"),
-                            password: Yup.string().min(8, "Password is too short").max(15, "Password is too long")
+                            pwd: Yup.string().min(8, "Password is too short").max(15, "Password is too long")
                             .required("Required")
                         })
                     }
-                    onSubmit={(values, {setSubmitting}) => {
-                        console.log(values);
+                    onSubmit={(values) => {
+                        console.log(JSON.stringify(values, null, 4));
+                        fetch("http://localhost:8080/user/login",{
+                            method:"POST",
+                            headers:{"Content-Type":"application/json"},
+                            body:JSON.stringify(values)
+
+                            }).then((response) => {
+                                response.text().then(d => {
+                                    console.log(d)
+                                    if(d==='Admin Page')
+                                    {
+                                        setMessage(d)
+                                    }
+                                    else if(d==='User Page')
+                                    {
+                                        setMessage(d)
+                                    }
+                                    else
+                                    {
+                                        setMessage(d)
+                                    }
+                                })
+                            })
                     }}
                 >
                     {({isSubmitting}) => (
@@ -42,7 +69,7 @@ const Login = () => {
                             </TextInput>
 
                             <TextInput
-                                name="password"
+                                name="pwd"
                                 type="password"
                                 label="Password"
                                 placeholder="******"
@@ -53,7 +80,17 @@ const Login = () => {
 
                             <ButtonGroup>
                                 <StyledFormButton type="submit">Login</StyledFormButton>
+                                <StyledFormButton type="reset">Reset</StyledFormButton>
                             </ButtonGroup>
+                            {message && (
+                                <div>
+                                <StyledFormArea>
+                                    <StyledTitle color={colors.theme} size={30}>
+                                        {message}
+                                    </StyledTitle>
+                                </StyledFormArea>
+                                </div>
+                            )}
                         </Form>
                     )}
                 </Formik>
@@ -67,5 +104,4 @@ const Login = () => {
         </div>
     )
 }
-
 export default Login;
