@@ -1,14 +1,21 @@
-import {StyledTextInput, StyledFormArea, StyledFormButton, StyledLabel, Avatar, StyledTitle, colors, ButtonGroup, ExtraText, TextLink, CopyrightText} from './../components/Styles'
+import {StyledFormArea, StyledFormButton, Avatar, StyledTitle, colors, ButtonGroup, ExtraText, TextLink, CopyrightText} from './../components/Styles'
 import RambosLogo from './../assets/RambosLogo.jpg';
-import {Formik, Form, Field} from 'formik';
+import {Formik, Form} from 'formik';
 import {TextInput} from './../components/FormLib';
 import {FiMail, FiLock, FiUser, FiSmartphone} from 'react-icons/fi';
 import * as Yup from 'yup';
 import "yup-phone";
-import React from 'react';
+import React, { useState } from 'react';
+import {useHistory} from 'react-router-dom'
 
-const Signup = () => {
+
+
+const Signup = () => {   
+    
+    const [message, setMessage] = useState("");
+    const history  = useHistory();
     return(
+        
         <div>
             <StyledFormArea>
                 <Avatar image={RambosLogo} />
@@ -35,20 +42,29 @@ const Signup = () => {
                         })
                     }
                     onSubmit={(fields) => {
-                        console.log(JSON.stringify(fields, null, 4));
+                        // console.log(JSON.stringify(fields, null, 4));
                         fetch("http://localhost:8080/user/add",{
                             method:"POST",
                             headers:{"Content-Type":"application/json"},
                             body:JSON.stringify(fields)
 
-                            }).then(()=>{
-                                console.log("New user added")
+                            }).then((response)=>{
+                                response.text().then(d => {
+                                    setMessage(d)
+                                    if(d==='User added successfully')
+                                    {
+                                        history.push('/useradded')
+                                    }
+                                    else
+                                    {
+                                        history.push('/usernotadded')
+                                    }
+                                })
                             })
-                    }}
+                    }} 
                 >
                     {({isSubmitting}) => (
                         <Form>
-
                             <TextInput
                                 name="user_type"
                                 type="text"
@@ -115,5 +131,4 @@ const Signup = () => {
         </div>
     )
 }
-
 export default Signup;

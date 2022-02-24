@@ -1,11 +1,14 @@
 import React from 'react';
 import { render } from 'react-dom';
-import App from './App';
-
+import Admin from './Admin';
+import LoginandSignup from './LoginandSignup';
+import User from './User';
+import successful from './pages/Login'
+import message from './pages/Login'
 
 
 render(
-            <App />,
+     <Admin />,
     document.getElementById('root')
 );
 
