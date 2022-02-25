@@ -6,6 +6,7 @@ import Signup from './pages/Signup';
 import Dashboard from './pages/Dashboard';
 import UserAdded from './pages/UserAdded'
 import UsernotAdded from './pages/UsernotAdded';
+import { authorized} from './pages/Login';
 
 //Admin
 import Admin from './pages/Admin';
@@ -59,18 +60,15 @@ function App() {
             <Dashboard />
           </Route>
 
-          <Route path="/admin">
-            <Admin />
-          </Route>
+          <Route path="/admin" component={()=> <Admin authorized={authorized}/>}/>
 
           <Route path='/adminprofile' component={AdminProfile}/>
 		      <Route path='/admininstitute' component={Institute} />
 		      <Route path='/admincourse' component={Course} />
 		      <Route path='/adminstudents' component={Students}/>
 
-          <Route path="/user">
-            <User />
-          </Route>
+          <Route path="/user" component={()=> <User authorized={authorized}/>}/>
+
 
           <Route path='/userprofile' component={Userprofile}/>
 		      <Route path='/userinstitute' component={UserInstitute} />
