@@ -8,6 +8,7 @@ import {useHistory} from 'react-router-dom'
 import React, { useState } from 'react';
 
 let logresp=""
+let authorized=false
 
 const Login = () => {
     const history  = useHistory();
@@ -44,15 +45,18 @@ const Login = () => {
                                     if(d==='Admin Page')
                                     {
                                         logresp=d
+                                        authorized=true
                                         history.push('/admin')
                                     }
                                     else if(d==='User Page')
                                     {
                                         logresp=d
+                                        authorized=true
                                         history.push('/user')
                                     }
                                     else
                                     {
+                                        authorized=false
                                         setMessage(d)
                                     }
                                 })
@@ -108,5 +112,5 @@ const Login = () => {
         </StyledContainer>
     )
 }
-export {logresp};
+export {logresp, authorized};
 export default Login;

@@ -1,7 +1,15 @@
 import React from "react";
 import Navbar from "./User Pages/User Components/Navbar";
+import {Redirect} from 'react-router-dom'
 
-const User = () => {
+const User = ({authorized}) => {
+
+    if(!authorized)
+    {
+        return(
+            <Redirect to='/' />
+        )
+    }
     return (
         <div>
         <Navbar />
