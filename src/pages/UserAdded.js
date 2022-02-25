@@ -1,8 +1,9 @@
-import {StyledFormArea, StyledTitle, colors, ExtraText, TextLink} from './../components/Styles'
+import {StyledFormArea, StyledTitle, colors, ExtraText, TextLink, StyledContainer} from './../components/Styles'
 import React from 'react';
 
 const UserAdded = () => {
     return(
+        <StyledContainer>
         <div>
             <StyledFormArea>
                 <StyledTitle color={colors.theme} size={30}>
@@ -13,6 +14,7 @@ const UserAdded = () => {
                 </ExtraText>
             </StyledFormArea>
         </div>
+        </StyledContainer>
     )
 }
 export default UserAdded;

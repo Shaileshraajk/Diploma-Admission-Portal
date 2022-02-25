@@ -1,8 +1,9 @@
-import { StyledTitle, StyledSubTitle, Avatar, StyledButton, ButtonGroup, CopyrightText} from "../components/Styles";
+import { StyledTitle, StyledSubTitle, Avatar, StyledButton, ButtonGroup, CopyrightText, StyledContainer} from "../components/Styles";
 import RambosLogo from './../assets/RambosLogo.jpg';
 
 const Home = () => {
     return(
+        <StyledContainer>
         <div>
             <div style={{
                 position: "absolute",
@@ -28,6 +29,7 @@ const Home = () => {
                 All rights reserved &copy; 2022
             </CopyrightText>
         </div>
+        </StyledContainer>
     );
 }
 

@@ -1,4 +1,4 @@
-import {StyledTextInput, StyledFormArea, StyledFormButton, StyledLabel, Avatar, StyledTitle, colors, ButtonGroup, ExtraText, TextLink, CopyrightText} from './../components/Styles'
+import {StyledTextInput, StyledFormArea, StyledFormButton, StyledLabel, Avatar, StyledTitle, colors, ButtonGroup, ExtraText, TextLink, CopyrightText, StyledContainer} from './../components/Styles'
 import RambosLogo from './../assets/RambosLogo.jpg';
 import {Formik, Form} from 'formik';
 import {TextInput} from './../components/FormLib';
@@ -7,12 +7,13 @@ import * as Yup from 'yup';
 import {useHistory} from 'react-router-dom'
 import React, { useState } from 'react';
 
-
+let logresp=""
 
 const Login = () => {
     const history  = useHistory();
     const [message, setMessage] = useState("");
     return(
+        <StyledContainer>
         <div>
             <StyledFormArea>
                 <Avatar image={RambosLogo} />
@@ -42,11 +43,13 @@ const Login = () => {
                                     console.log(d)
                                     if(d==='Admin Page')
                                     {
-                                        setMessage(d)
+                                        logresp=d
+                                        history.push('/admin')
                                     }
                                     else if(d==='User Page')
                                     {
-                                        setMessage(d)
+                                        logresp=d
+                                        history.push('/user')
                                     }
                                     else
                                     {
@@ -102,6 +105,8 @@ const Login = () => {
                 All rights reserved &copy; 2022
             </CopyrightText>
         </div>
+        </StyledContainer>
     )
 }
+export {logresp};
 export default Login;
