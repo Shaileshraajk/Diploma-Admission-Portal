@@ -1,4 +1,4 @@
-import {StyledFormArea, StyledFormButton, Avatar, StyledTitle, colors, ButtonGroup, ExtraText, TextLink, CopyrightText} from './../components/Styles'
+import {StyledFormArea, StyledFormButton, Avatar, StyledTitle, colors, ButtonGroup, ExtraText, TextLink, CopyrightText, StyledContainer} from './../components/Styles'
 import RambosLogo from './../assets/RambosLogo.jpg';
 import {Formik, Form} from 'formik';
 import {TextInput} from './../components/FormLib';
@@ -15,7 +15,7 @@ const Signup = () => {
     const [message, setMessage] = useState("");
     const history  = useHistory();
     return(
-        
+        <StyledContainer>
         <div>
             <StyledFormArea>
                 <Avatar image={RambosLogo} />
@@ -129,6 +129,7 @@ const Signup = () => {
                 All rights reserved &copy; 2022
             </CopyrightText>
         </div>
+        </StyledContainer>
     )
 }
 export default Signup;
