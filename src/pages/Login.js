@@ -57,7 +57,7 @@ const Login = () => {
                                     else
                                     {
                                         authorized=false
-                                        setMessage(d)
+                                        history.push('/invalidlogin')
                                     }
                                 })
                             })
@@ -89,15 +89,6 @@ const Login = () => {
                                 <StyledFormButton type="submit">Login</StyledFormButton>
                                 <StyledFormButton type="reset">Reset</StyledFormButton>
                             </ButtonGroup>
-                            {message && (
-                                <div>
-                                <StyledFormArea>
-                                    <StyledTitle color={colors.theme} size={30}>
-                                        {message}
-                                    </StyledTitle>
-                                </StyledFormArea>
-                                </div>
-                            )}
                         </Form>
                     )}
                 </Formik>
