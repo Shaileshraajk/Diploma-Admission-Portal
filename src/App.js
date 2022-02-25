@@ -6,6 +6,7 @@ import Signup from './pages/Signup';
 import Dashboard from './pages/Dashboard';
 import UserAdded from './pages/UserAdded'
 import UsernotAdded from './pages/UsernotAdded';
+import InvalidLogin from './pages/InvalidLogin';
 import { authorized} from './pages/Login';
 
 //Admin
@@ -54,6 +55,10 @@ function App() {
 
           <Route path="/login">
             <Login />
+          </Route>
+
+          <Route path="/invalidlogin">
+            <InvalidLogin />
           </Route>
 
           <Route path="/dashboard">
