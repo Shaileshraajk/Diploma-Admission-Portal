@@ -1,6 +1,7 @@
 import React from "react";
 import College from "./User Components/College"
 import Navbar from './User Components/Navbar'
+import background from './../../assets/rr8.jpg'
 
 const UserInstitute = () => (
 
@@ -12,6 +13,7 @@ const UserInstitute = () => (
             justifyContent: 'center',
             alignItems: 'center',
             height: '15vh',
+            backgroundImage:`url(${background})`
         }}
         >
         <input
