@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "./style.css";
 import Menu from "./collegeApi.js";
 import MenuCard from "./CollegeCard";
-import Navbar from "./Navbar";
 
 const uniqueList = [
   ...new Set(
@@ -33,17 +32,8 @@ const Resturant = () => {
 
   return (
     <>
-      <MenuCard menuData={menuData} />
-      <div
-      style={{
-        display: 'flex',
-        justifyContent: 'right',
-        alignItems: 'right',
-        height: '10vh',
-    }}
-    >
-      
-      </div>
+      <MenuCard menuData={menuData}>
+      </MenuCard>
     </>
   );
 

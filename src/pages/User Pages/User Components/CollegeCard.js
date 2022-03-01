@@ -14,15 +14,12 @@ const MenuCard = ({ menuData }) => {
                 <div className="card ">
                   <div className="card-body">
                     <span className="card-number card-circle subtle">{id}</span>
+                    {<img src={image} alt="images" className="card-media" />  }
                     <h2 className="card-title"> {name} </h2>
                     <span className="card-description subtle">
-                      <h3>{Place}</h3>
+                      <h1>Place: {Place}</h1>
                     </span>
-                    <div className="card-read">Read More</div>
-                  </div>
-                <img src={image} alt="images" className="card-media" /> 
-
-                  
+                  </div>                 
                   
                 </div>
               </div>
