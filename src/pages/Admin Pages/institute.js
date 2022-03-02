@@ -2,6 +2,7 @@ import React from "react";
 import College from "./Admin Components/College"
 import Navbar from './Admin Components/Navbar';
 import background from './../../assets/adminpage1.jpg'
+
 const SearchBar = () => (
 
     <form action="/" method="get">

@@ -7,8 +7,11 @@ import * as Yup from 'yup';
 import {useHistory} from 'react-router-dom'
 import React, { useState } from 'react';
 
-let logresp=""
+let name=""
+let mobno=""
+let emailadd=""
 let authorized=false
+
 
 const Login = () => {
     const history  = useHistory();
@@ -34,32 +37,37 @@ const Login = () => {
                     }
                     onSubmit={(values) => {
                         console.log(JSON.stringify(values, null, 4));
-                        fetch("http://localhost:8080/user/login",{
+                        fetch("http://localhost:8080/user/loginuser",{
                             method:"POST",
                             headers:{"Content-Type":"application/json"},
                             body:JSON.stringify(values)
 
                             }).then((response) => {
-                                response.text().then(d => {
-                                    console.log(d)
-                                    if(d==='Admin Page')
-                                    {
-                                        logresp=d
-                                        authorized=true
-                                        history.push('/admin')
-                                    }
-                                    else if(d==='User Page')
-                                    {
-                                        logresp=d
-                                        authorized=true
-                                        history.push('/user')
-                                    }
-                                    else
-                                    {
-                                        authorized=false
-                                        history.push('/invalidlogin')
-                                    }
-                                })
+                                if(response.status===400)
+                                {
+                                    history.push('/invalidlogin')
+                                }
+                                else
+                                {
+                                    response.json().then(d => {
+                                        if(d.user_type==="1")
+                                        {
+                                            authorized=true;
+                                            name=d.name
+                                            mobno=d.mobno
+                                            emailadd=d.email
+                                            history.push('/admin')
+                                        }
+                                        else
+                                        {
+                                            authorized=true;
+                                            name=d.name
+                                            mobno=d.mobno
+                                            emailadd=d.email
+                                            history.push('/user')
+                                        }
+                                    })
+                                }
                             })
                     }}
                 >
@@ -103,5 +111,5 @@ const Login = () => {
         </StyledContainer>
     )
 }
-export {logresp, authorized};
+export {authorized, name, mobno, emailadd};
 export default Login;
