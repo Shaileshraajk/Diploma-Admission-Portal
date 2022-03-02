@@ -25,6 +25,11 @@ font-size: 1.4rem;
 &.active {
 	color: #000000;
 }
+&:hover{
+	text-decoration: underline;
+	letter-spacing: 2px;
+	font-weight: bold;
+}
 `;
 
 export const Bars = styled(FaCalendar)`
