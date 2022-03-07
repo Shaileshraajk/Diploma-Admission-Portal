@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 import background from './../assets/bg.jpg';
 
+import couresbg from './../assets/rr8.jpg'
+
 import {Link} from 'react-router-dom';
 
 export const colors = {
@@ -176,9 +178,9 @@ export const StyledIcons = styled.p`
     color: ${colors.dark1};
     position: absolute;
     font-size: 21px;
-    top: 30px;
+    top: 40px;
     ${(props) => props.right && `right: 15px; `};
-    ${(props) => !props.right && `left: 15px; `}
+    ${(props) => !props.right && `left: 20px; `}
 `;
 
 //Copyright
@@ -218,4 +220,15 @@ export const Dropdown = styled.select`
         padding: 0px 2px 1px;
       }
 
+`;
+
+export const CoursesContainer = styled.div`
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    background: linear-gradient(0deg, rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(${couresbg});
+    align-items: flex-start;
+    background-size: cover;
+    background-attachment: fixed;
 `;
